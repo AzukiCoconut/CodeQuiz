@@ -1,0 +1,51 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    text-align: center;
+    font-size: 150%;
+}
+h2 {
+    font-size: 140%;
+}
+h3 {
+    font-size: 130%;
+}
+h4 {
+    font-size: 120%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.highScoreLink {
+    display: inline;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    padding-top: 0px;
+}
+
+.start {
+    text-align: center;
+}
+
+.questions {
+    font-size: 28px;
+    font-weight: 700;
+    font-style: italic;
+    padding: 20px;
+}
+
+.answers {
+    padding: 0px 0 10px 0px;
+}
