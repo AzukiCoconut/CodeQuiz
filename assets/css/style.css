@@ -24,6 +24,23 @@ header {
     align-items: center;
     padding: 0 20px;
 }
+.answers {
+    margin-left: 20px;
+}
+.answers div {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 15vw;
+    background-color: blueviolet;
+    color: white;
+}
+
+.answers div:hover {
+    background-color: violet;
+}
+
 .highScoreLink {
     display: inline;
 }
@@ -40,7 +57,7 @@ header {
 }
 
 .questions {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
     font-style: italic;
     padding: 20px;
@@ -49,3 +66,4 @@ header {
 .answers {
     padding: 0px 0 10px 0px;
 }
+
