@@ -12,7 +12,7 @@
 <body>
     <header>
         <h4 class="highScoreLink"><a href="#">View high scores</a></h4>
-        <p>Time: <span class="timer">53</span></p>
+        <p>Time: <span class="timer">60</span></p>
     </header>
     <main class="wrapper">
         <section class="start">
@@ -29,22 +29,28 @@
         <section class="answers">
             
         </section>
-        <section class="answerCheck">
-            <hr>
-            <p class="feedback"></p>
-        </section>
+
         <section class="allDone">
             <h3>All Done!</h3>
             <p>Your final score is <span class="score"></span>.</p>
             <label for="initials">Enter initals:</label>
-            <input type="text" name="initials" id="initials">
-            <button type="submit">Submit</button>
+            <input type="text" name="initials" class="initials">
+            <button class="submitInitial">Submit</button>
+        </section>
+
+        <section class="answerCheck">
+            <hr>
+            <p class="feedback"></p>
         </section>
         <section class="highScores">
             <h3>High Scores</h3>
             <div class="listHighScores"></div>
             <button class="go-back">Go Back</button>
             <button class="clear">Clear high scores</button>
+        </section>
+        <section class="GameOver">
+            <h2>Game Over</h2>
+            <button class="go-back">Go Back</button>
         </section>
     </main>
     <script src="./assets/js/script.js"></script>
