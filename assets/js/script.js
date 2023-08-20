@@ -5,7 +5,6 @@ var feedbackArea = document.querySelector('.answerCheck');
 var feedback = document.querySelector('.feedback');
 var finish = document.querySelector('.allDone');
 var startArea = document.querySelector('.start');
-var reset = document.querySelector('.reset');
 var finalScore = document.querySelector('.score');
 var initialsEl = document.querySelector('.initials');
 var highScoreArea = document.querySelector('.highScores');
