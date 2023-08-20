@@ -293,7 +293,6 @@ highScoreLink.addEventListener("click", showHighScoreList);
 goBackBtn.addEventListener("click", goBack);
 clearBtn.addEventListener("click", clearScores);
 submitInit.addEventListener("click", addHighScore);
-reset.addEventListener("click", goBack);
 
 // Start the application
 init();
