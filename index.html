@@ -33,6 +33,7 @@
         <section class="allDone">
             <h3>All Done!</h3>
             <p>Your final score is <span class="score"></span>.</p>
+            <p class="error"></p>
             <label for="initials">Enter initals:</label>
             <input type="text" name="initials" class="initials">
             <button class="submitInitial">Submit</button>
@@ -44,13 +45,16 @@
         </section>
         <section class="highScores">
             <h3>High Scores</h3>
+            
             <div class="listHighScores"></div>
-            <button class="go-back">Go Back</button>
-            <button class="clear">Clear high scores</button>
+            <div class="buttonDiv">
+                <button class="go-back">Go Back</button>
+                <button class="clear">Clear high scores</button>
+            </div>
         </section>
         <section class="GameOver">
             <h2>Game Over</h2>
-            <button class="go-back">Go Back</button>
+            <button class="reset">Go Back</button>
         </section>
     </main>
     <script src="./assets/js/script.js"></script>

@@ -5,6 +5,7 @@ var feedback = document.querySelector('.feedback');
 var finish = document.querySelector('.allDone');
 var gameOverEl = document.querySelector('.GameOver');
 var startArea = document.querySelector('.start');
+var reset = document.querySelector('.reset');
 var finalScore = document.querySelector('.score');
 var initialsEl = document.querySelector('.initials');
 var highScoreArea = document.querySelector('.highScores');
@@ -14,18 +15,23 @@ var startBtn = document.querySelector('.start-button');
 var submitInit = document.querySelector('.submitInitial');
 var goBackBtn = document.querySelector('.go-back');
 var clearBtn = document.querySelector('.clear');
-var timerEl = document.querySelector('.timer');
+var timerEl = document.querySelector('.timer'); 
+var errorMessage = document.querySelector('.error');
 var current = 0;
 var timer;
 var timerCount;
 var numQuestions;
 
 var allQuestions = {
-    'What is Canada\'s national animal?' : ['Beaver', 'Duck', 'Horse', 0],
+    'Inside which HTML element do we put the JavaScript' : ['<javascript>', '<scripting>', '<script>', '<js>', 2],
     
-    'What is converted into alcohol during brewing?' : ['Grain', 'Sugar' , 'Water', 1],
+    'Where is the correct place to insert a JavaScript?' : ['The <body> section', 'Both the <head> section and the <body> section are correct' , 'The <head> section', 1],
     
-    'In what year was Prince Andrew born? ' : ['1955', '1960', '1970', 1]
+    'What is the correct syntax for referring to an external script called xxx.js? ' : ['<script src="xxx.js">', '<script name="xxx.js">', '<script href="xxx.js">', 0],
+
+    'The external JavaScript file must contain the <script> tags' : ['True', 'False', 1],
+
+    'How do you create a function in JavaScript?' : ['function myFunction()', 'function = myFunction()', 'function:myFunction()', 0]
   };
   
   numQuestions = Object.keys(allQuestions).length;
@@ -65,10 +71,16 @@ var allQuestions = {
   function gameOver(score){
     questionArea.setAttribute("style", "display: none;");
     answerArea.setAttribute("style", "display: none;");
-    toggleFinish(true);
-    finalScore.textContent = score;
-
+    
+    if (score <= 0){
+      finalScore.textContent = 0;
+    } else {
+      finalScore.textContent = score;
+    }
+    toggleFinish(true)
+    timerEl.textContent = 0;
   }
+
   function loadQuestion(curr) {
     var question = Object.keys(allQuestions)[current];
     console.log(question);
@@ -96,25 +108,21 @@ var allQuestions = {
   }
 }
 
-function loseGame() {
-  toggleStart(false);
-  toggleGame(false);
-  toggleFinish(false);
-  toggleHighScore(false);
-  toggleGameOver(true);
-}
 function startTimer(){
   timer = setInterval(function() {
     timerCount--;
     timerEl.textContent = timerCount;
-    if (timerCount === 0){
+    if (timerCount <= 0){
       clearInterval(timer);
-      loseGame();
+      gameOver(0);
     }
   }, 1000);
 }
 
 function startGame() {
+  current = 0;
+  initialsEl.value = '';
+  errorMessage.innerHTML = '';
   feedback.innerHTML = '';
   timerCount = 60;
   setGameBoard();
@@ -123,6 +131,11 @@ function startGame() {
   loadAnswer();
 }
 function addHighScore(){
+    if (initialsEl.value === '') {
+      errorMessage.innerHTML = "Please enter your initials.";
+      errorMessage.setAttribute("style", "display:block;");
+      return;
+    }
     var score = finalScore.textContent;
     var initHighScore = initialsEl.value;
     var storedScores = localStorage.getItem("highScores");
@@ -152,15 +165,14 @@ function renderHighScores(storedScores) {
   }
 
   highScoreList.innerHTML = '';
-  var orderedList = document.createElement('ol');
   for (var i=0;i<storedScores.length;i++) {
     console.log(i);
-    var listItem = document.createElement('li');
-    listItem.textContent = storedScores[i].initial + " - " + storedScores[i].score;
+    var listDiv = document.createElement('div');
+    listDiv.textContent = (i+1) + ". " + storedScores[i].initial + " - " + storedScores[i].score;
 
-    orderedList.appendChild(listItem);
+    highScoreList.appendChild(listDiv);
   }
-  highScoreList.appendChild(orderedList);
+
 }
 
 function getHighScores() {
@@ -214,6 +226,7 @@ function toggleGameOver(option){
 }
 
 function goBack() {
+  current = 0;
   toggleStart(true);
   toggleGame(false);
   toggleFinish(false);
@@ -258,5 +271,6 @@ highScoreLink.addEventListener("click", showHighScoreList);
 goBackBtn.addEventListener("click", goBack);
 clearBtn.addEventListener("click", clearScores);
 submitInit.addEventListener("click", addHighScore);
+reset.addEventListener("click", goBack);
 
 init();
