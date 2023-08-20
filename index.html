@@ -10,11 +10,15 @@
     <title>JavaScript Code Quiz</title>
 </head>
 <body>
+    <!-- Header secton that contains the Link to the High Scores and the Timer in the top corners. -->
     <header>
         <h4 class="highScoreLink"><a href="#">View high scores</a></h4>
         <p>Time: <span class="timer">60</span></p>
     </header>
+
+    <!-- Main section that contains all the moving parts of the application -->
     <main class="wrapper">
+        <!-- Start Section -->
         <section class="start">
             <h1>Coding Quiz Challenge</h1>
             <p>To answer the following code related questions within the time limit. 
@@ -23,13 +27,16 @@
             <button class="start-button">Start Quiz</button>
         </section>
 
+        <!-- Section that contains the questions added by JavaScript -->
         <section class="questionArea">
             <p class="questions"></p>
         </section>
+        <!-- Section that contains the list of answers added by JavaScript -->
         <section class="answers">
             
         </section>
 
+        <!-- Section that display the final score and collects the user's initials -->
         <section class="allDone">
             <h3>All Done!</h3>
             <p>Your final score is <span class="score"></span>.</p>
@@ -39,10 +46,13 @@
             <button class="submitInitial">Submit</button>
         </section>
 
+        <!-- Section where the confirmation is displayed to the user whether the answer selected is correct or not -->
         <section class="answerCheck">
             <hr>
             <p class="feedback"></p>
         </section>
+
+        <!-- A section to display the high scores from local storage -->
         <section class="highScores">
             <h3>High Scores</h3>
             
@@ -52,11 +62,8 @@
                 <button class="clear">Clear high scores</button>
             </div>
         </section>
-        <section class="GameOver">
-            <h2>Game Over</h2>
-            <button class="reset">Go Back</button>
-        </section>
     </main>
+    <!-- Script file -->
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
